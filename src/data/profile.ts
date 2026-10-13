@@ -6,6 +6,8 @@
 export const profile = {
   name: 'Carlos Eduardo Tomé da Silva',
   shortName: 'Carlos Eduardo',
+  // Usado na barra superior em telas estreitas, onde o nome completo quebraria em duas linhas
+  compactName: 'Carlos Eduardo T. da Silva',
   initials: 'CE',
   pitch:
     'Fundador do RankUp e da Oasis Beach. Construo produto do modelo de receita ao código em produção.',

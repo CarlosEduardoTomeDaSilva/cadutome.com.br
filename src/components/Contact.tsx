@@ -26,7 +26,7 @@ export function Contact() {
       <div className={wrap}>
         <Reveal>
           <div className="rounded-3xl bg-accent-soft px-6 py-14 sm:px-12 md:py-20">
-            <h2 className="font-display text-5xl leading-[0.95] md:text-7xl">Vamos conversar?</h2>
+            <h2 className="font-display text-4xl leading-[0.95] min-[360px]:text-5xl md:text-7xl">Vamos conversar?</h2>
             <p className="mt-6 max-w-[50ch] text-lg leading-relaxed text-ink/80">{profile.availability}</p>
 
             <div className="mt-10 flex flex-wrap items-center gap-4">

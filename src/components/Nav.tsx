@@ -23,10 +23,13 @@ export function Nav() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-bg/80 backdrop-blur-md">
-      <nav className={`${wrap} flex h-16 items-center justify-between gap-6`} aria-label="Principal">
+      <nav className={`${wrap} flex h-16 items-center justify-between gap-3 sm:gap-6`} aria-label="Principal">
         <a href="#topo" className="flex items-center gap-3 font-semibold">
           <Avatar />
-          <span className="text-sm leading-tight text-balance sm:text-base">{profile.name}</span>
+          <span className="text-sm leading-tight text-balance min-[360px]:whitespace-nowrap sm:text-base">
+            <span className="hidden min-[390px]:inline">{profile.name}</span>
+            <span className="min-[390px]:hidden">{profile.compactName}</span>
+          </span>
         </a>
 
         <ul className="hidden items-center gap-1 md:flex">
