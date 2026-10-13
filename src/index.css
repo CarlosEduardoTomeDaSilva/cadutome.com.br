@@ -1,0 +1,90 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/archivo/wdth.css';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/*
+ * Paleta "areia e mar": areia (fundo), azul-mar profundo (texto e painéis)
+ * e laranja de pôr do sol como único acento. Contrastes validados em WCAG AA.
+ */
+@theme {
+  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: #f3ecdf;
+  --color-surface: #fbf7f0;
+  --color-ink: #102a32;
+  --color-muted: #4f6266;
+  --color-line: rgb(16 42 50 / 0.12);
+  --color-accent: #b93d0c;
+  --color-on-accent: #fff8f0;
+  --color-accent-soft: #f1d9c8;
+  --color-accent-bright: #ff8a5b;
+  --color-deep: #102a32;
+  --color-deep-ink: #f3ecdf;
+  --color-deep-muted: #a9bdbe;
+  --color-deep-line: rgb(243 236 223 / 0.14);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #0c1e24;
+  --color-surface: #13292f;
+  --color-ink: #eee5d5;
+  --color-muted: #a3b2b1;
+  --color-line: rgb(238 229 213 / 0.12);
+  --color-accent: #ff8a5b;
+  --color-on-accent: #0c1e24;
+  --color-accent-soft: #46251a;
+  --color-accent-bright: #ff8a5b;
+  --color-deep: #163844;
+  --color-deep-ink: #eee5d5;
+  --color-deep-muted: #a9bdbe;
+  --color-deep-line: rgb(238 229 213 / 0.14);
+  color-scheme: dark;
+}
+
+/* Títulos largos e pesados, com cara de placar esportivo */
+@utility font-display {
+  font-stretch: 118%;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+/* Números condensados, como em um placar */
+@utility font-score {
+  font-stretch: 72%;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    scrollbar-gutter: stable;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
