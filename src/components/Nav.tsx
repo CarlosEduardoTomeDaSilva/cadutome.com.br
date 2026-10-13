@@ -14,7 +14,7 @@ const sections = [
 ] as const
 
 // Hero e formação não têm link, mas são observados para apagar o destaque quando estão na tela
-const observedIds = ['topo', ...sections.map((s) => s.id), 'formacao']
+const observedIds = ['topo', ...sections.map((s) => s.id), 'ritmo', 'formacao']
 
 export function Nav() {
   const active = useActiveSection(observedIds)

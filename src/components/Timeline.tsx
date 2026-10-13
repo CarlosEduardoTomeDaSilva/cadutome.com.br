@@ -8,7 +8,7 @@ import {
 } from '@phosphor-icons/react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useMemo, useRef, useState, type KeyboardEvent } from 'react'
-import { timeline, type TimelineCategory } from '../data/profile'
+import { timeline, type Milestone, type TimelineCategory } from '../data/profile'
 import { chip, heading, iconButton, lead, sectionY, wrap } from '../lib/ui'
 import { Reveal } from './Reveal'
 
@@ -24,7 +24,7 @@ const categoryIcon: Record<TimelineCategory, Icon> = {
 
 const statusLabel = { agora: 'Acontecendo agora', previsto: 'Previsto' } as const
 
-export function Timeline() {
+export function Timeline({ onSelect }: { onSelect?: (milestone: Milestone) => void }) {
   const reduce = useReducedMotion()
   const [filter, setFilter] = useState<Filter>('Todos')
   const [activeTitle, setActiveTitle] = useState(timeline[0].title)
@@ -45,6 +45,7 @@ export function Timeline() {
     const milestone = items[i]
     if (!milestone) return
     setActiveTitle(milestone.title)
+    onSelect?.(milestone)
     const button = buttons.current.get(milestone.title)
     if (button && rail.current) {
       // Rola só o trilho, sem mexer na rolagem da página
@@ -72,7 +73,10 @@ export function Timeline() {
     setFilter(next)
     rail.current?.scrollTo({ left: 0, behavior: reduce ? 'auto' : 'smooth' })
     const first = next === 'Todos' ? timeline[0] : timeline.find((m) => m.category === next)
-    if (first) setActiveTitle(first.title)
+    if (first) {
+      setActiveTitle(first.title)
+      onSelect?.(first)
+    }
   }
 
   const ActiveIcon = categoryIcon[active.category]
