@@ -26,7 +26,7 @@ export function Nav() {
       <nav className={`${wrap} flex h-16 items-center justify-between gap-6`} aria-label="Principal">
         <a href="#topo" className="flex items-center gap-3 font-semibold">
           <Avatar />
-          <span className="sr-only sm:not-sr-only">{profile.shortName}</span>
+          <span className="text-sm leading-tight text-balance sm:text-base">{profile.name}</span>
         </a>
 
         <ul className="hidden items-center gap-1 md:flex">
